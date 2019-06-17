@@ -39,7 +39,7 @@ describe("POST /users", () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a("object");
-        res.body.should.have.property("token");
+        res.body.should.have.property("tokens");
         res.body.should.have.property("code");
         res.body.should.have.property(user).a("object");
         done();
