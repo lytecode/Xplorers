@@ -1,7 +1,41 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
-const mongodb = require("./config/mongoDB");
+// const mongodb = require("./config/mongoDB");
 const PORT = process.env.PORT || 3000;
+
+//db connection
+if (process.env.NODE_ENV === "production") {
+  mongoose
+    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplorer", {
+      useNewUrlParser: true,
+      useCreateIndex: true
+    })
+    .then(() => console.log(`production db started successfully`))
+    .catch(err =>
+      console.log(`Ooops! Something went wrong with db connection`)
+    );
+} else if (process.env.NODE_ENV === "test") {
+  mongoose
+    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplorer-test", {
+      useNewUrlParser: true,
+      useCreateIndex: true
+    })
+    .then(() => console.log(`Using Test db`))
+    .catch(err =>
+      console.log(`Ooops! Something went wrong with db connection`)
+    );
+} else {
+  mongoose
+    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplore", {
+      useNewUrlParser: true,
+      useCreateIndex: true
+    })
+    .then(() => console.log(`db connected successfully`))
+    .catch(err =>
+      console.log(`Ooops! Something went wrong with db connection`)
+    );
+}
 
 //middlewares
 app.use(express.json());

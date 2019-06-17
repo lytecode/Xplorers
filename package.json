@@ -4,9 +4,9 @@
   "description": "A fullstack node application which handles image upload ",
   "main": "server/app.js",
   "scripts": {
-    "start": "server/app.js",
+    "start": "cross-env NODE_ENV=production node server/app.js",
     "dev": "nodemon ./server/app.js",
-    "test": ""
+    "test": "cross-env NODE_ENV=test mocha  server/test/*.spec.js --timeout 1000000 --exit"
   },
   "keywords": [
     "explorers",
@@ -19,9 +19,13 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cloudinary": "^1.11.0",
+    "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "express": "^4.16.3",
+    "mocha": "^6.1.4",
     "mongoose": "^5.1.8"
   },
   "devDependencies": {
