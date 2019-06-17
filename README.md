@@ -1,14 +1,15 @@
 # DEVSQUARE
 
 ### This application was developed using the following technologies:
+
 - Nodejs
-- Expressjs 
+- Expressjs
 - MongoDB
-- Ejs
-- Passport
+- React
+- JWT
 - Multer - for Form image upload
--Cloudinary - for Cloud image storage
-- *Heroku* - Hosting platform
+- Cloudinary - for Cloud image storage
+- _Heroku_ - Hosting platform
 
 ### A user can do the following:
 
@@ -20,7 +21,4 @@
 6. Delete a Meetup (authentiaction and authorization required)
 7. Register to attend an Event (Login Required), etc
 
-This app is hosted on *Heroku* and can be tested via this link [DevSquare](https://meetupdev.herokuapp.com/)
-
-
-
+This app is hosted on _Heroku_ and can be tested via this link [Xplorers](https://explorers.herokuapp.com/)
