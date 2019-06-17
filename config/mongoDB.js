@@ -1,12 +1,14 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
-
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 //connection to database
-mongoose.connect(process.env.MongoDB_URI || 'mongodb://localhost/meetup');
+mongoose.connect(process.env.MongoDB_URI || "mongodb://localhost/xplore", {
+  useNewUrlParser: true
+});
 const db = mongoose.connection;
-db.on('connected', () => console.log('db connected successfully'));
-db.on('error', () => console.log('Ooops! Something went wrong with db connection'));
-
+db.on("connected", () => console.log("db connected successfully"));
+db.on("error", () =>
+  console.log("Ooops! Something went wrong with db connection")
+);
 
 module.exports = db;
