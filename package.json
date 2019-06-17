@@ -2,10 +2,10 @@
   "name": "Xplorers",
   "version": "1.0.0",
   "description": "A fullstack node application which handles image upload ",
-  "main": "server.js",
+  "main": "server/app.js",
   "scripts": {
-    "start": "server.js",
-    "dev": "nodemon server.js",
+    "start": "server/app.js",
+    "dev": "nodemon ./server/app.js",
     "test": ""
   },
   "keywords": [

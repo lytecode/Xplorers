@@ -12,7 +12,7 @@ app.get("/", (req, res, next) => {
   });
 });
 
-app.use("/api/users", require("./app/routes/userRoute"));
+app.use("/api/users", require("./routes/userRoute"));
 
 //default error handler
 app.use((err, req, res, next) => {
