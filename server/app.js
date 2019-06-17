@@ -1,7 +1,8 @@
 const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 const mongoose = require("mongoose");
 const app = express();
-// const mongodb = require("./config/mongoDB");
 const PORT = process.env.PORT || 3000;
 
 //db connection
@@ -38,6 +39,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //middlewares
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
