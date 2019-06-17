@@ -3,7 +3,8 @@ require("dotenv").config();
 
 //connection to database
 mongoose.connect(process.env.MongoDB_URI || "mongodb://localhost/xplore", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 });
 const db = mongoose.connection;
 db.on("connected", () => console.log("db connected successfully"));
