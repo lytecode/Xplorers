@@ -38,7 +38,8 @@ describe("POST /users", () => {
       .send(newUser)
       .end((err, res) => {
         res.should.have.status(201);
-        res.boody.should.be.a("object");
+        res.body.should.be.a("object");
+        res.body.should.have.property("token");
         res.body.should.have.property("code");
         res.body.should.have.property(user).a("object");
         done();
