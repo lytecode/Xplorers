@@ -1,13 +1,15 @@
 const express = require("express");
+const cors = require("cors");
+const config = require("./config/index");
+const helmet = require("helmet");
 const mongoose = require("mongoose");
 const app = express();
-// const mongodb = require("./config/mongoDB");
-const PORT = process.env.PORT || 3000;
+const { PORT, DEV_DB, PROD_DB, TEST_DB } = config;
 
 //db connection
 if (process.env.NODE_ENV === "production") {
   mongoose
-    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplorer", {
+    .connect(PROD_DB, {
       useNewUrlParser: true,
       useCreateIndex: true
     })
@@ -17,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
     );
 } else if (process.env.NODE_ENV === "test") {
   mongoose
-    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplorer-test", {
+    .connect(TEST_DB, {
       useNewUrlParser: true,
       useCreateIndex: true
     })
@@ -27,17 +29,19 @@ if (process.env.NODE_ENV === "production") {
     );
 } else {
   mongoose
-    .connect(process.env.MongoDB_URI || "mongodb://localhost/xplore", {
+    .connect(DEV_DB, {
       useNewUrlParser: true,
       useCreateIndex: true
     })
-    .then(() => console.log(`db connected successfully`))
+    .then(() => console.log(`Dev db connected successfully`))
     .catch(err =>
       console.log(`Ooops! Something went wrong with db connection`)
     );
 }
 
 //middlewares
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
